@@ -3,12 +3,9 @@ MAINTAINER shivagopal9515@gmail.com
 RUN yum install -y httpd\
 zip\
 unzip
-ADD https://www.free-css.com/assets/file/free-css-templates/download/page254/photogenic.zip /var/www/html
+ADD https://bootstrapmade.com/content/templatefiles/PhotoFolio/PhotoFolio.zip 
 WORKDIR /var/www/html
-
-RUN unzip photogenic.zip
-RUN cp -rvf photogenic/* .
-RUN rm -rf photogenic photogenic.zip
+RUN cd /var/www/html && unzip PhotoFolio.zip && mv PhotoFolio/* . && rm -rf PhotoFolio.zip PhotoFolio
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
 EXPOSE 80
 
