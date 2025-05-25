@@ -1,6 +1,6 @@
 FROM centos:7
 MAINTAINER shivagopal9515@gmail.com
-RUN yum install -y http\
+RUN yum install -y httpd\
 zip\
 unzip
 ADD https://www.free-css.com/assets/file/free-css-templates/download/page254/photogenic.zip /var/www/html
