@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HOST_IP = "ip-172-31-11-78"
+        DOCKER_HOST_IP = "${params.DOCKER_HOST_IP}"
         DOCKER_USER = "ubuntu"
         IMAGE_NAME = "photogenic-app"
         CONTAINER_NAME = "photogenic-container"
