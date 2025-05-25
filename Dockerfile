@@ -1,6 +1,7 @@
-FROM centos:7
+FROM almalinux:8
 MAINTAINER shivagopal9515@gmail.com
-RUN yum install -y httpd zip unzip
+
+RUN dnf install -y httpd zip unzip
 ADD https://bootstrapmade.com/content/templatefiles/PhotoFolio/PhotoFolio.zip /var/www/html/
 
 WORKDIR /var/www/html
