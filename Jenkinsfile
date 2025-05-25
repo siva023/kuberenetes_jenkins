@@ -4,11 +4,6 @@ pipeline {
         IMAGE_NAME = 'photogenic-app'
     }
     stages {
-        stage('Clone Repo') {
-            steps {
-                git 'https://github.com/siva023/kuberenetes_jenkins.git'
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME:latest .'
