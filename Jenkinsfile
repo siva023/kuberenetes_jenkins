@@ -43,8 +43,8 @@ pipeline {
                 sshagent(['docker-remote-key']) {
                     sh """
                     ssh ${DOCKER_USER}@${DOCKER_HOST_IP} 'docker rm -f ${CONTAINER_NAME} || true'
-                    ssh ${DOCKER_USER}@${DOCKER_HOST_IP} 'docker run -d --name ${CONTAINER_NAME} -p ${HOST_PORT}:${CONTAINER_PORT} ${IMAGE_NAME}:latest'
-                    """
+		    ssh ${DOCKER_USER}@${DOCKER_HOST_IP} 'docker run -d --name ${CONTAINER_NAME} -p 80:80 ${IMAGE_NAME}:latest'
+		    """
                 }
             }
         }
