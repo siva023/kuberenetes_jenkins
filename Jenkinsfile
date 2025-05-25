@@ -19,13 +19,15 @@ pipeline {
 
         stage('Build Docker Image on Remote EC2') {
             steps {
-                sshagent(['docker-remote-key']) {
-                    sh """
-                    scp -o StrictHostKeyChecking=no -r . ${DOCKER_USER}@${DOCKER_HOST_IP}:/tmp/app
-                    ssh ${DOCKER_USER}@${DOCKER_HOST_IP} 'docker build -t ${IMAGE_NAME}:latest /tmp/app'
-                    """
-                }
-            }
+	    sshagent(['docker-remote-key']) {
+    sh """
+    ssh ubuntu@${DOCKER_HOST_IP} 'rm -rf /tmp/app'
+    scp -o StrictHostKeyChecking=no -r . ubuntu@${DOCKER_HOST_IP}:/tmp/app
+    """
+}
+
+                            
+	    }
         }
 
         stage('Run Container on Remote EC2') {
